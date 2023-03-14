@@ -1,0 +1,15 @@
+create account for using our application,verify account by the email ID and phone number.
+Features:-1.Profile Pic 
+           >By camera
+           >By Gallery
+           >By Photos
+          2.chat with friends,call,search,notification,video call,send emoji,share our location,share contact number,
+          3.create group,create video,edit,delete,post,streak
+          4.If someone chatting continue more than two days then we give streak and gives tags(best friends,good friend)
+
+
+
+ Develop a virtual reality experience (such as a game or educational tool) that can be used with a VR headset.
+ Benefits:-With the help of VR headset we improve our typing speed,logical skill
+           VR headset is also useful for education with the help of VR persion can assume that what will be happened with them in reality
+           but it is vizualization This is also helpful in medical field 
