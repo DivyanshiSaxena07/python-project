@@ -1,0 +1,7 @@
+INFO:root:A New request Came:
+ERROR:root:division by zero
+Traceback (most recent call last):
+  File "/home/dev/Desktop/divyanshi/python9March2023/15March2023/ExecptionHandling.py", line 231, in <module>
+    print(x/y)
+ZeroDivisionError: division by zero
+INFO:root:Request Processing Completed
