@@ -1,24 +1,7 @@
-# this is my first python programe
-a = '''Lorem ipsum dolor sit amet,
-consectetur adipiscing elit,
-sed do eiusmod tempor incididunt
-ut labore et dolore magna aliqua.'''
-# a="harry"
-# print(a[-4:-2])
-print(a)
-#for c in a:
-
-
-
-
-
-
-
-
-
 import turtle
+from turtle import*
 import random
- 
+import time 
 w = 500
 h = 500
 food_size = 10
@@ -33,12 +16,12 @@ offsets = {
  
 def reset():
     global snake, snake_dir, food_position, pen
-    snake = [[0, 0], [0, 20], [0, 40], [0, 60], [0, 80]]
+    snake = [[0, 0], [0, 10], [0, 20], [0, 30], [0, 40]]
     snake_dir = "up"
     food_position = get_random_food_position()
     food.goto(food_position)
     move_snake()
-     
+
 def move_snake():
     global snake_dir
  
@@ -48,6 +31,11 @@ def move_snake():
  
      
     if new_head in snake[:-1]:
+       
+    #    clearstamp(res)
+        # screen.
+        # time.sleep(4)
+        # input("Enter any key to continue")
         reset()
     else:
         snake.append(new_head)
@@ -97,52 +85,50 @@ def get_distance(pos1, pos2):
     x2, y2 = pos2
     distance = ((y2 - y1) ** 2 + (x2 - x1) ** 2) ** 0.5
     return distance
+
 def go_up():
     global snake_dir
-    if snake_dir != "down":
-        snake_dir = "up"
- 
-def go_right():
-    global snake_dir
-    if snake_dir != "left":
-        snake_dir = "right"
- 
+    if snake_dir!="down":
+        snake_dir="up"
+        
 def go_down():
     global snake_dir
-    if snake_dir!= "up":
-        snake_dir = "down"
- 
+    if snake_dir!="up":
+        snake_dir="down"
+        
+def go_right():
+    global snake_dir
+    if snake_dir!="left":
+        snake_dir="right"
+
 def go_left():
     global snake_dir
-    if snake_dir != "right":
-        snake_dir = "left"
- 
- 
-screen = turtle.Screen()
-screen.setup(w, h)
+    if snake_dir!="right":
+        snake_dir="left"
+    
+screen=turtle.Screen()
+screen.setup(w,h)
 screen.title("Snake")
 screen.bgcolor("lightpink")
-screen.setup(500, 500)
+screen.setup(550,550)
 screen.tracer(0)
- 
- 
-pen = turtle.Turtle("square")
+
+pen=turtle.Turtle("circle")
 pen.penup()
- 
- 
-food = turtle.Turtle()
+
+food=turtle.Turtle()
 food.shape("circle")
-food.color("yellow")
-food.shapesize(food_size / 20)
+food.color("white")
+food.shapesize(food_size/20)
 food.penup()
- 
- 
+
 screen.listen()
-screen.onkey(go_up, "Up")
-screen.onkey(go_right, "Right")
-screen.onkey(go_down, "Down")
-screen.onkey(go_left, "Left")
- 
- 
+screen.onkey(go_up,"Up")
+screen.onkey(go_right,"Right")
+screen.onkey(go_down,"Down")
+screen.onkey(go_left,"Left")
+
+
+
 reset()
 turtle.done()

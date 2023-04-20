@@ -1,0 +1,22 @@
+<button onClick="GFG_Fun()">
+    click here
+</button>
+<script>
+   
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "post");
+        form.setAttribute("action", "submit.php");
+
+
+        var ID = document.createElement("input");
+        ID.setAttribute("type", "text");
+        ID.setAttribute("name", "emailID");
+        ID.setAttribute("placeholder", "E-Mail ID");
+
+        form.append(ID);
+        document.getElementsByTagName("body")[0]
+        .appendChild(form);
+
+  
+</script>

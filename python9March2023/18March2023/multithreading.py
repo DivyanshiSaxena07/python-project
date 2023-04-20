@@ -96,14 +96,19 @@
 #  print("Thread Name:",t.name)
 
 
-from threading import *
-import time
-def display():
-    for i in range(10):
-        print("Seetha Thread")
-        time.sleep(5)
-t=Thread(target=display)
-t.start()
-t.join()#This Line executed by Main Thread
-for i in range(10):
-    print("Rama Thread")
+# from threading import *
+# import time
+# def display():
+#     for i in range(10):
+#         print("Seetha Thread")
+#         time.sleep(5)
+# t=Thread(target=display)
+# t.start()
+# t.join()#This Line executed by Main Thread
+# for i in range(10):
+#     print("Rama Thread")
+
+lst=[1,2,3]
+tpl=(1,2,3)
+print(len(lst))
+print(len(tpl))
