@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'link.html' %}
+  <title>WizartForm</title>
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+
+</head>
+
+<body>
+ 
+
+
+
+{% block body %}{% endblock body %}
+{% if messages %}
+    
+        {% for message in messages %}
+
+        <div class="alert {{ message.tags }}">
+          <input type="checkbox" id="alert1"/>
+          <label class="close" title="close" for="alert1">
+            <i class="icon-remove"></i>
+          </label>
+          <p class="inner">
+            <strong>  {{ message }}
+          </p>
+        </div>
+        
+        {% endfor %}
+    
+    {% endif %}
+
+  <h1>Login & registration Form</h1>
+  <div class="info"><a href="https://www.grandvincent-marion.fr" target="_blank">
+      <p> Made with <i class="fa fa-heart"></i> by Marion Grandvincent </p>
+    </a></div>
+
+  <div class="content">
+    <div class="container">
+      <img class="bg-img" src="https://mariongrandvincent.github.io/HTML-Personal-website/img-codePen/bg.jpg" alt="">
+      <div class="menu">
+        <a href="#connexion" class="btn-connexion">
+          <h2>SIGN IN</h2>
+        </a>
+        <a href="#enregistrer" class="btn-enregistrer active">
+          <h2>SIGN UP</h2>
+        </a>
+      </div>
+      <div class="connexion">
+        <form method="post" action="/user/login">
+          {% csrf_token %}
+          <div class="contact-form">
+            <label>Username</label>
+            <input name="lname" id="lname" placeholder="" type="text">
+
+            <label>Password</label>
+            <input name="lpass" id="lpass" placeholder="" type="text">
+
+            <input class="submit" style="margin-top:20px" value="SIGN IN" type="submit">
+          </div>
+
+          <hr>
+          <a href="https://www.grandvincent-marion.fr/" target="_blank">
+            <h4>Forgot password?</h4>
+          </a>
+        </form>
+      </div>
+
+
+      <div class="enregistrer active-section">
+        <form method="post" action="/user/signup">
+          {% csrf_token %}
+          <div class="contact-form">
+            <label>Username</label>
+            <input name="name" id="name" placeholder="Enter your name" type="text">
+
+            <label>Email</label>
+            <input name="email" id="email" placeholder="Enter your email" type="text">
+
+            <label>Password</label>
+            <input name="pass1" id="pass1" placeholder="Enter password" type="text">
+
+            <label>Confirm Password</label>
+            <input name="pass2" id="pass2" placeholder="Confirm password" type="text">
+
+            <input  class="submit" value="SIGN UP" type="submit"style="margin-top:20px">
+
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="{% static '/js/script.js' %}"></script>
+</body>
+
+</html>

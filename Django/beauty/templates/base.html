@@ -35,15 +35,34 @@
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                       <li><a class="dropdown-item" href="#">Perfume</a></li>
                       <li><a class="dropdown-item" href="#">Cosmatics</a></li>
+                      {% if user.is_authenticated %}
                       <li><a class="dropdown-item" href="/view">Add</a></li>
-
+                      {% else %}
+                      <li><a class="dropdown-item" href="/auth/user/login">Add</a></li>
+                      {% endif %}
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">Something else here</a></li>
+                       
                     </ul>
                   </li>
                 </ul>
                
               </div>
+
+               <!-- Button trigger modal -->
+                      
+                      {% if user.is_authenticated %}
+                     <a class="btn btn-primary mx-3" href="/auth/user/logout">Logout</a>
+              
+                      {% else %}
+                      <button type="button" class="btn btn-primary mx-3" data-bs-toggle="modal" data-bs-target="#signupmodal">
+                        Sign Up
+                      </button> 
+                      
+                      <button type="button" class="btn btn-primary mx-2" data-bs-toggle="modal" data-bs-target="#loginmodal">
+                        login
+                      </button>    
+                      {% endif %}
             </div>
         </nav>
 
@@ -69,10 +88,89 @@
 
 
         {% block body %}{% endblock body %}
+
+
+{% comment %} signup modal {% endcomment %}
+
+        <div class="modal fade" id="signupmodal" tabindex="-1" aria-labelledby="signupmodal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="signupmodal">Signup</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {% comment %} form data {% endcomment %}
+                <form method="post" action="/auth/user/signup">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">User Name</label>
+                    <input type="text" name="name" class="form-control" id="username"
+                      placeholder="Enter user name">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Email</label>
+                    <input type="email" name="email" class="form-control" id="email"
+                      placeholder="name@example.com">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Password</label>
+                    <input type="password" name="pass1" class="form-control" id="pass1"
+                      placeholder="Enter password">
+                  </div>
         
-      </div> 
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Confirm Password</label>
+                    <input type="password" name="pass2" class="form-control" id="pass2"
+                      placeholder="confirm your password">
+                  </div>
         
-        <script src="" async defer>
+        
+                  <button type="submit" class="btn btn-primary">signup</button>
+        
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div> 
+
+        <!-- login modal -->
+        <div class="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="loginmodal" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="loginmodal">login</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {% comment %} form data {% endcomment %}
+                <form method="post" action="/auth/user/login">
+                  {% csrf_token %}
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">User Name</label>
+                    <input type="text" name="lname" class="form-control" id="lname"
+                      placeholder="Enter user name">
+                  </div>
+                   
+        
+                  <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Confirm Password</label>
+                    <input type="password" name="lpass" class="form-control" id="lpass"
+                      placeholder="confirm your password">
+                  </div>
+        
+        
+                  <button type="submit" class="btn btn-primary">login</button>
+        
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div> 
+        
+        
 
         </script>
   

@@ -4,6 +4,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib import messages
 from product.models import Customer
+from product.form import*
 
 
 def index(request):
@@ -65,3 +66,29 @@ def delete(request,id):
    cust.delete()
    
    return redirect('view')
+
+
+def name_view(request):
+   form=NameForm()
+   request.session.set_test_cookie()
+   return render(request,'name.html',{'form':form})
+
+def age_view(request):
+   name=request.GET['name']
+   request.session['name']=name
+   request.session.set_test_cookie()
+   form=AgeForm()
+   return render(request,'age.html',{'form':form})
+
+def msg_view(request):
+   age=request.GET['age']
+   request.session['age']=age
+   request.session.set_test_cookie()
+   form=MsgForm()
+   return render(request,'msg.html',{'form':form})
+
+def results_view(request):
+   msg=request.GET['msg']
+   request.session['msg']=msg
+   request.session.set_test_cookie()
+   return render(request,'results.html')
